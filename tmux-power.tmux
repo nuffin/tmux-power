@@ -112,9 +112,13 @@ fi
 
 # upload speed
 if "$show_upload_speed"; then
-    LS="$LS#[fg=$G2,bg=$G1]$rarrow#[fg=$TC,bg=$G1] $upload_speed_icon #{upload_speed} #[fg=$G1,bg=$G0]$rarrow"
+    LS="$LS#[fg=$G06,bg=$G05]$rarrow#[fg=$TC,bg=$G05] $upload_speed_icon #{upload_speed} #[fg=$G05,bg=$BG]$rarrow"
 else
-    LS="$LS#[fg=$G2,bg=$G0]$rarrow"
+    if "$show_host"; then
+        LS="$LS#[fg=$G06,bg=$BG]$rarrow"
+    else
+        LS="$LS#[fg=$TC,bg=$G06]$rarrow"
+    fi
 fi
 if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
     LS="$LS#{prefix_highlight}"
