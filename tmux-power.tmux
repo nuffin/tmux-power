@@ -113,13 +113,13 @@ fi
 
 # upload speed
 if "$show_upload_speed"; then
-    LS="$LS#[fg=$G06,bg=$G05]$rarrow#[fg=$TC,bg=$G05] $upload_speed_icon #{upload_speed} #[fg=$G05,bg=$BG]$rarrow"
+    LS="$LS#[fg=$G2,bg=$G1]$rarrow#[fg=$TC,bg=$G1] $upload_speed_icon #{upload_speed} #[fg=$G1,bg=$G0]$rarrow"
 else
     if "$show_host"; then
-        LS="$LS#[fg=$G06,bg=$BG]$rarrow"
+        LS="$LS#[fg=$G2,bg=$G0]$rarrow"
     else
         if "$show_session"; then
-            LS="$LS#[fg=$TC,bg=$BG]$rarrow"
+            LS="$LS#[fg=$TC,bg=$G0]$rarrow"
         fi
     fi
 fi
