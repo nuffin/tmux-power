@@ -349,10 +349,9 @@ main() {
     load_tmux_options
     resolve_theme_colors
     configure_status_bar
-    if [[ "$status_lines" == "1" ]]; then
-        build_left_status
-        build_right_status
-    else
+    build_left_status
+    build_right_status
+    if [[ "$status_lines" == "2" ]]; then
         configure_dual_status_bars
     fi
     configure_ui_styles
