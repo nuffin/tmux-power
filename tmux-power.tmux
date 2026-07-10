@@ -91,6 +91,7 @@ configure_status_bar() {
     tmux_set status-right-length 150
 }
 
+# Build the left side of the status bar (outer→inner sections a→d)
 build_left_status() {
     local LS="" prev_bg="$G0" first=true
     local content bg fg style i
@@ -125,6 +126,7 @@ build_left_status() {
     tmux_set status-left "$LS"
 }
 
+# Build the right side of the status bar (inner→outer sections w→z)
 build_right_status() {
     local RS="" prev_bg="$G0"
     local content bg fg style i
@@ -152,6 +154,7 @@ build_right_status() {
     tmux_set status-right "$RS"
 }
 
+# Enable dual status bar (status=2) and populate both format slots
 configure_dual_status_bars() {
     tmux_set status 2
     build_status_format_0
@@ -184,6 +187,7 @@ build_status_format_0() {
         "#[list=on align=#{status-justify}]#[list=left-marker]<#[list=right-marker]>#[list=on]${win_normal},${win_current}"
 }
 
+# Build the lower status line (status-format[1]) — window list + pane info
 build_status_format_1() {
     local fmt_left="#[align=left range=left #{E:status-left-style}]#[push-default]"
     fmt_left+="#{T;=/#{status-left-length}:status-left}#[pop-default]#[norange default]"
@@ -344,6 +348,7 @@ load_tmux_options() {
     )"
 }
 
+# Orchestrate the full configuration pipeline: defaults → options → theme → bars → ui → flush
 main() {
     set_defaults
     load_tmux_options
